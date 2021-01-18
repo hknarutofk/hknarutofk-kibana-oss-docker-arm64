@@ -14,7 +14,7 @@ RUN yum install -y glibc-static gcc make
 RUN mkdir /usr/share/kibana
 WORKDIR /usr/share/kibana
 # https://artifacts.elastic.co/downloads/kibana/kibana-oss-7.10.2-linux-aarch64.tar.gz
-COPY kibana-7.10.2-linux-aarch64/* /usr/share/kibana/
+COPY kibana-7.10.2-linux-aarch64 /usr/share/kibana
 
 # compile dumb-init from sources
 RUN mkdir -p /opt/dumb-init
