@@ -1,0 +1,125 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.EuiPageContent = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _panel = require("../../panel/panel");
+
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+var verticalPositionToClassNameMap = {
+  center: 'euiPageContent--verticalCenter'
+};
+var horizontalPositionToClassNameMap = {
+  center: 'euiPageContent--horizontalCenter'
+};
+
+var EuiPageContent = function EuiPageContent(_ref) {
+  var verticalPosition = _ref.verticalPosition,
+      horizontalPosition = _ref.horizontalPosition,
+      _ref$panelPaddingSize = _ref.panelPaddingSize,
+      panelPaddingSize = _ref$panelPaddingSize === void 0 ? 'l' : _ref$panelPaddingSize,
+      children = _ref.children,
+      className = _ref.className,
+      rest = (0, _objectWithoutProperties2.default)(_ref, ["verticalPosition", "horizontalPosition", "panelPaddingSize", "children", "className"]);
+  var classes = (0, _classnames.default)('euiPageContent', verticalPosition ? verticalPositionToClassNameMap[verticalPosition] : null, horizontalPosition ? horizontalPositionToClassNameMap[horizontalPosition] : null, className);
+  return /*#__PURE__*/_react.default.createElement(_panel.EuiPanel, (0, _extends2.default)({
+    className: classes,
+    paddingSize: panelPaddingSize
+  }, rest), children);
+};
+
+exports.EuiPageContent = EuiPageContent;
+EuiPageContent.propTypes = {
+  className: _propTypes.default.string,
+  "aria-label": _propTypes.default.string,
+  "data-test-subj": _propTypes.default.string,
+
+  /**
+     * If active, adds a deeper shadow to the panel
+     */
+
+  /**
+     * If active, adds a deeper shadow to the panel
+     */
+  hasShadow: _propTypes.default.bool,
+
+  /**
+     * Padding applied to the panel
+     */
+
+  /**
+     * Padding applied to the panel
+     */
+  paddingSize: _propTypes.default.oneOf(["none", "s", "m", "l"]),
+
+  /**
+     * When true the panel will grow to match `EuiFlexItem`
+     */
+
+  /**
+     * When true the panel will grow to match `EuiFlexItem`
+     */
+  grow: _propTypes.default.bool,
+  panelRef: _propTypes.default.any,
+
+  /**
+     * Add a badge to the panel to label it as "Beta" or other non-GA state
+     */
+
+  /**
+     * Add a badge to the panel to label it as "Beta" or other non-GA state
+     */
+  betaBadgeLabel: _propTypes.default.string,
+
+  /**
+     * Add a description to the beta badge (will appear in a tooltip)
+     */
+
+  /**
+     * Add a description to the beta badge (will appear in a tooltip)
+     */
+  betaBadgeTooltipContent: _propTypes.default.node,
+
+  /**
+     * Optional title will be supplied as tooltip title or title attribute otherwise the label will be used
+     */
+
+  /**
+     * Optional title will be supplied as tooltip title or title attribute otherwise the label will be used
+     */
+  betaBadgeTitle: _propTypes.default.string,
+  panelPaddingSize: _propTypes.default.oneOf(["none", "s", "m", "l"]),
+  verticalPosition: _propTypes.default.oneOf(["center"]),
+  horizontalPosition: _propTypes.default.oneOf(["center"])
+};

@@ -1,0 +1,34 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.icon = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var EuiIconTokenRankFeature = function EuiIconTokenRankFeature(_ref) {
+  var title = _ref.title,
+      titleId = _ref.titleId,
+      props = (0, _objectWithoutProperties2.default)(_ref, ["title", "titleId"]);
+  return /*#__PURE__*/_react.default.createElement("svg", (0, _extends2.default)({
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16",
+    xmlns: "http://www.w3.org/2000/svg",
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/_react.default.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M13 4v8h-2V6H9v4H5v2H3V8h4V4h6z"
+  }));
+};
+
+var icon = EuiIconTokenRankFeature;
+exports.icon = icon;

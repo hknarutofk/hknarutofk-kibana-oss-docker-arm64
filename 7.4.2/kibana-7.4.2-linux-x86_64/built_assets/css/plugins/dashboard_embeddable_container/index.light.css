@@ -1,0 +1,132 @@
+.react-grid-layout .gs-w {
+  z-index: auto; }
+
+/**
+ * 1. Due to https://github.com/STRML/react-grid-layout/issues/240 we have to manually hide the resizable
+ * element.
+ */
+.dshLayout--viewing .react-resizable-handle {
+  display: none;
+  /* 1 */ }
+
+/**
+ * 1. If we don't give the resizable handler a larger z index value the layout will hide it.
+ */
+.dshLayout--editing .react-resizable-handle {
+  width: 24px;
+  height: 24px;
+  z-index: 1000;
+  /* 1 */
+  right: 0;
+  bottom: 0;
+  padding-right: 8px;
+  padding-bottom: 8px; }
+
+/**
+ * 1. Need to override the react grid layout height when a single panel is expanded. Important is required because
+ * otherwise the height is set inline.
+ */
+.dshLayout-isMaximizedPanel {
+  height: 100% !important;
+  /* 1. */
+  width: 100%;
+  position: absolute; }
+
+/**
+ * .dshLayout-withoutMargins only affects the panel styles themselves, see ../panel
+ */
+/**
+ * When a single panel is expanded, all the other panels are hidden in the grid.
+ */
+.dshDashboardGrid__item--hidden {
+  display: none; }
+
+/**
+ * 1. We need to mark this as important because react grid layout sets the width and height of the panels inline.
+ */
+.dshDashboardGrid__item--expanded {
+  height: 100% !important;
+  /* 1 */
+  width: 100% !important;
+  /* 1 */
+  top: 0 !important;
+  /* 1 */
+  left: 0 !important;
+  /* 1 */ }
+
+.react-grid-item {
+  /**
+   * Disable transitions from the library on each grid element.
+   */
+  -webkit-transition: none;
+  transition: none;
+  /**
+    * Copy over and overwrite the fill color with EUI color mixin (for theming)
+    */
+  /**
+   * Dragged/Resized panels in dashboard should always appear above other panels
+   * and above the placeholder
+   */
+  /**
+   * Overwrites red coloring that comes from this library by default.
+   */ }
+  .react-grid-item > .react-resizable-handle {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpolygon fill='rgb%28105, 112, 125%29' points='6 6 0 6 0 4.2 4 4.2 4.2 4.2 4.2 0 6 0' /%3E%3C/svg%3E%0A"); }
+    .react-grid-item > .react-resizable-handle::after {
+      border: none; }
+    .react-grid-item > .react-resizable-handle:hover, .react-grid-item > .react-resizable-handle:focus {
+      background-color: rgba(245, 167, 0, 0.1); }
+  .react-grid-item.resizing, .react-grid-item.react-draggable-dragging {
+    z-index: 2000 !important; }
+  .react-grid-item.react-draggable-dragging {
+    -webkit-transition: -webkit-box-shadow 150ms cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: -webkit-box-shadow 150ms cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: box-shadow 150ms cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: box-shadow 150ms cubic-bezier(0.694, 0.0482, 0.335, 1), -webkit-box-shadow 150ms cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -webkit-box-shadow: 0 40px 64px 0 rgba(65, 78, 101, 0.1), 0 24px 32px 0 rgba(65, 78, 101, 0.1), 0 16px 16px 0 rgba(65, 78, 101, 0.1), 0 8px 8px 0 rgba(65, 78, 101, 0.1), 0 4px 4px 0 rgba(65, 78, 101, 0.1), 0 2px 2px 0 rgba(65, 78, 101, 0.1);
+            box-shadow: 0 40px 64px 0 rgba(65, 78, 101, 0.1), 0 24px 32px 0 rgba(65, 78, 101, 0.1), 0 16px 16px 0 rgba(65, 78, 101, 0.1), 0 8px 8px 0 rgba(65, 78, 101, 0.1), 0 4px 4px 0 rgba(65, 78, 101, 0.1), 0 2px 2px 0 rgba(65, 78, 101, 0.1);
+    border-radius: 4px; }
+  .react-grid-item.react-grid-placeholder {
+    border-radius: 4px;
+    background: #F5A700; }
+
+@media only screen and (max-width: 574px) {
+  .dshLayout--viewing .react-grid-item {
+    position: static !important;
+    width: calc(100% - 16px) !important;
+    margin: 8px; }
+  .dshLayout--viewing.dshLayout-withoutMargins .react-grid-item {
+    width: 100% !important;
+    margin: 0; } }
+
+@media only screen and (min-width: 575px) and (max-width: 767px) {
+  .dshLayout--viewing .react-grid-item {
+    position: static !important;
+    width: calc(100% - 16px) !important;
+    margin: 8px; }
+  .dshLayout--viewing.dshLayout-withoutMargins .react-grid-item {
+    width: 100% !important;
+    margin: 0; } }
+
+/**
+  * EDITING MODE
+  * Use .dshLayout--editing to target editing state because
+  * .embPanel--editing doesn't get updating without a hard refresh
+  */
+.dshLayout-withoutMargins .embPanel,
+.dshDashboardGrid__item--expanded .embPanel {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 0; }
+
+.dshLayout-withoutMargins:not(.dshLayout--editing) .embPanel,
+.dshDashboardGrid__item--expanded .embPanel {
+  border-color: transparent; }
+
+.dshDashboardViewport {
+  width: 100%;
+  background-color: #FFF; }
+
+.dshDashboardViewport-withMargins {
+  width: 100%; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJ1aWxkL2tpYmFuYS1vc3Mvc3JjL3NyYy9sZWdhY3kvY29yZV9wbHVnaW5zL2Rhc2hib2FyZF9lbWJlZGRhYmxlX2NvbnRhaW5lci9wdWJsaWMvbnBfcmVhZHkvcHVibGljL2xpYi9lbWJlZGRhYmxlL2dyaWQvX2Rhc2hib2FyZF9ncmlkLnNjc3MiLCJidWlsZC9raWJhbmEtb3NzL3NyYy9sZWdhY3kvY29yZV9wbHVnaW5zL2Rhc2hib2FyZF9lbWJlZGRhYmxlX2NvbnRhaW5lci9wdWJsaWMvaW5kZXguc2NzcyIsImJ1aWxkL25vZGVfbW9kdWxlcy9AZWxhc3RpYy9ldWkvc3JjL2dsb2JhbF9zdHlsaW5nL21peGlucy9fc2l6ZS5zY3NzIiwiYnVpbGQvbm9kZV9tb2R1bGVzL0BlbGFzdGljL2V1aS9zcmMvZ2xvYmFsX3N0eWxpbmcvdmFyaWFibGVzL19zaXplLnNjc3MiLCJidWlsZC9ub2RlX21vZHVsZXMvQGVsYXN0aWMvZXVpL3NyYy9nbG9iYWxfc3R5bGluZy92YXJpYWJsZXMvX3pfaW5kZXguc2NzcyIsImJ1aWxkL3NyYy9sZWdhY3kvY29yZV9wbHVnaW5zL2VtYmVkZGFibGVfYXBpL3B1YmxpYy9fdmFyaWFibGVzLnNjc3MiLCJidWlsZC9ub2RlX21vZHVsZXMvQGVsYXN0aWMvZXVpL3NyYy9nbG9iYWxfc3R5bGluZy92YXJpYWJsZXMvX2FuaW1hdGlvbnMuc2NzcyIsImJ1aWxkL25vZGVfbW9kdWxlcy9AZWxhc3RpYy9ldWkvc3JjL2dsb2JhbF9zdHlsaW5nL21peGlucy9fc2hhZG93LnNjc3MiLCJidWlsZC9ub2RlX21vZHVsZXMvQGVsYXN0aWMvZXVpL3NyYy9nbG9iYWxfc3R5bGluZy9mdW5jdGlvbnMvX2NvbG9ycy5zY3NzIiwiYnVpbGQvbm9kZV9tb2R1bGVzL0BlbGFzdGljL2V1aS9zcmMvZ2xvYmFsX3N0eWxpbmcvdmFyaWFibGVzL19ib3JkZXJzLnNjc3MiLCJidWlsZC9ub2RlX21vZHVsZXMvQGVsYXN0aWMvZXVpL3NyYy9nbG9iYWxfc3R5bGluZy92YXJpYWJsZXMvX2NvbG9ycy5zY3NzIiwiYnVpbGQvbm9kZV9tb2R1bGVzL0BlbGFzdGljL2V1aS9zcmMvZ2xvYmFsX3N0eWxpbmcvbWl4aW5zL19yZXNwb25zaXZlLnNjc3MiLCJidWlsZC9raWJhbmEtb3NzL3NyYy9zcmMvbGVnYWN5L2NvcmVfcGx1Z2lucy9kYXNoYm9hcmRfZW1iZWRkYWJsZV9jb250YWluZXIvcHVibGljL25wX3JlYWR5L3B1YmxpYy9saWIvZW1iZWRkYWJsZS9wYW5lbC9fZGFzaGJvYXJkX3BhbmVsLnNjc3MiLCJidWlsZC9raWJhbmEtb3NzL3NyYy9zcmMvbGVnYWN5L2NvcmVfcGx1Z2lucy9kYXNoYm9hcmRfZW1iZWRkYWJsZV9jb250YWluZXIvcHVibGljL25wX3JlYWR5L3B1YmxpYy9saWIvZW1iZWRkYWJsZS92aWV3cG9ydC9fZGFzaGJvYXJkX3ZpZXdwb3J0LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxhQUFhLEVBQUE7O0FBR2Y7OztFQ0NFO0FER0Y7RUFFSSxhQUFhO0VBQUUsTUFBQSxFQUFPOztBQUkxQjs7RUNGRTtBREtGO0VFakJFLFdDSTBCO0VESDFCLFlDRzBCO0VIZ0J4QixhSUxzQjtFSktBLE1BQUE7RUFDdEIsUUFBUTtFQUNSLFNBQVM7RUFDVCxrQkdyQnVCO0VIc0J2QixtQkd0QnVCLEVBQUE7O0FIMEIzQjs7O0VDRkU7QURNRDtFQUNDLHVCQUF1QjtFQUFFLE9BQUE7RUFDekIsV0FBVztFQUNYLGtCQUFrQixFQUFBOztBQUdwQjs7RUNIRTtBRE9GOztFQ0pFO0FET0Y7RUFDRSxhQUFhLEVBQUE7O0FBR2Y7O0VDTEU7QURRRjtFQUNFLHVCQUF1QjtFQUFFLE1BQUE7RUFDekIsc0JBQXNCO0VBQUUsTUFBQTtFQUN4QixpQkFBaUI7RUFBRSxNQUFBO0VBQ25CLGtCQUFrQjtFQUFFLE1BQUEsRUFBTzs7QUFPN0I7RUFDRTs7SUNORTtFRFNELHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDakI7O0tDTkc7RURzQkg7OztJQ2xCRTtFRGlDRjs7SUM5QkUsRURnQ0M7RUF0Q0w7SUFTSSx3T0FBaVAsRUFBQTtJQVRyUDtNQVlNLFlBQVksRUFBQTtJQVpsQjtNQWlCTSx3Q0tqRitFLEVBQUE7RUxnRXJGO0lBMkJJLHdCQUErQixFQUFBO0VBM0JuQztJQStCSSxrRk01RndEO0lONEZ4RCwwRU01RndEO0lONEZ4RCxrRU01RndEO0lONEZ4RCxrSU01RndEO0lDMER4RCxnUEN0RHlDO1lEc0R6Qyx3T0N0RHlDO0lSMEZ6QyxrQlMzRmlCLEVBQUE7RVQwRHJCO0lBd0NJLGtCU2xHaUI7SVRtR2pCLG1CVTVGcUIsRUFBQTs7QUNzQmY7RVg2RVI7SUFFSSwyQkFBMkI7SUFDM0IsbUNBQTBDO0lBQzFDLFdHakhxQixFQUFBO0VINkd6QjtJQVNNLHNCQUFzQjtJQUN0QixTQUFTLEVBQUEsRUFDVjs7QVduRkc7RVh3RVI7SUFFSSwyQkFBMkI7SUFDM0IsbUNBQTBDO0lBQzFDLFdHakhxQixFQUFBO0VINkd6QjtJQVNNLHNCQUFzQjtJQUN0QixTQUFTLEVBQUEsRUFDVjs7QVkzSFA7Ozs7R1g2R0c7QVdwR0g7O0VBR0ksd0JBQWdCO1VBQWhCLGdCQUFnQjtFQUNoQixnQkFBZ0IsRUFBQTs7QUFLcEI7O0VBR0kseUJBQXlCLEVBQUE7O0FDckI3QjtFQUNFLFdBQVc7RUFDWCxzQkhjdUIsRUFBQTs7QUdYekI7RUFDRSxXQUFXLEVBQUEiLCJmaWxlIjoiYnVpbGQva2liYW5hLW9zcy9zcmMvbGVnYWN5L2NvcmVfcGx1Z2lucy9kYXNoYm9hcmRfZW1iZWRkYWJsZV9jb250YWluZXIvcHVibGljL2luZGV4LnNjc3MifQ== */

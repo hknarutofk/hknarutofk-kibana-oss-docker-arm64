@@ -1,0 +1,34 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.icon = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var EuiIconList = function EuiIconList(_ref) {
+  var title = _ref.title,
+      titleId = _ref.titleId,
+      props = (0, _objectWithoutProperties2.default)(_ref, ["title", "titleId"]);
+  return /*#__PURE__*/_react.default.createElement("svg", (0, _extends2.default)({
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16",
+    xmlns: "http://www.w3.org/2000/svg",
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/_react.default.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M2 4V3h2v1H2zm4 0V3h8v1H6zm0 3V6h8v1H6zm0 3V9h8v1H6zM2 7V6h2v1H2zm0 3V9h2v1H2zm4 3v-1h8v1H6zm-4 0v-1h2v1H2z"
+  }));
+};
+
+var icon = EuiIconList;
+exports.icon = icon;
